@@ -1,0 +1,135 @@
+/* =========================================
+   1. VARIÁVEIS E RESET (Cores Originais)
+   ========================================= */
+:root {
+    --verde: #66754C;
+    --creme: #F6EEDB;
+    --dourado: #BE9B6D;
+    --texto: #2C3322;
+    --branco: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+
+body { background-color: var(--creme); color: var(--texto); overflow-x: hidden; width: 100%; }
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+.center { text-align: center; }
+
+/* =========================================
+   2. HEADER E NAVEGAÇÃO (Universal)
+   ========================================= */
+header { background: var(--branco); padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+nav { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--verde); font-weight: bold; }
+.nav-menu { display: flex; gap: 20px; list-style: none; align-items: center; }
+.nav-menu a { text-decoration: none; color: var(--texto); font-size: 13px; font-weight: 600; text-transform: uppercase; }
+.nav-menu a.active { color: var(--verde); border-bottom: 2px solid var(--verde); }
+.cta-nav { background: var(--verde); color: white !important; padding: 10px 20px; border-radius: 4px; }
+
+/* =========================================
+   3. GRIDS DE CONTEÚDO (Para todas as páginas)
+   ========================================= */
+/* Unificando as grids de Procedimentos, Noivas e Home */
+.grid-servicos, .gallery-grid, .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+/* =========================================
+   4. ESTILO DOS CARDS (Procedimentos E Noivas)
+   ========================================= */
+
+/* Estilo para a página de Procedimentos (.card) */
+.card {
+    background: var(--branco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+/* Estilo para a página de Noivas (.package-card) */
+.package-card {
+    background: var(--branco);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+.package-card.featured { border: 2px solid var(--verde); transform: scale(1.02); }
+
+/* Recipientes de Mídia (Imagens e Vídeos) */
+.media-container, .package-img, .gallery-item {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+}
+
+.media-container img, .media-container video, 
+.package-img img, .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-body, .package-info { padding: 25px; text-align: center; }
+
+.badge {
+    position: absolute; top: 15px; right: 15px;
+    background: var(--verde); color: white;
+    padding: 5px 15px; border-radius: 20px; font-size: 10px; font-weight: bold;
+}
+
+/* =========================================
+   5. SEÇÃO HERO E TIPOGRAFIA
+   ========================================= */
+.hero-flex { display: flex; align-items: center; gap: 50px; padding: 60px 0; }
+.hero-text { flex: 1; }
+.hero-img-container { flex: 1; text-align: center; }
+
+h1, .section-title { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--verde); margin-bottom: 20px; }
+h2, h3 { font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+
+.subtitle { color: var(--dourado); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+
+.img-hero { width: 100%; max-width: 400px; border-radius: 200px 200px 0 0; border: 8px solid white; box-shadow: 15px 15px 0 var(--verde); }
+
+.btn-primary, .btn-gold, .btn-outline {
+    display: inline-block; padding: 12px 25px; border-radius: 4px; 
+    text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.3s;
+}
+.btn-primary, .btn-gold { background: var(--verde); color: white; }
+.btn-outline { border: 1px solid var(--verde); color: var(--verde); }
+
+/* =========================================
+   6. RODAPÉ E BOTÃO FLUTUANTE
+   ========================================= */
+footer { background: #1a1e14; color: var(--creme); padding: 60px 0 20px; margin-top: 50px; }
+.footer-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.footer-box { flex: 1; min-width: 250px; }
+.footer-title { color: var(--dourado); margin-bottom: 15px; font-family: 'Playfair Display', serif; }
+.footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; }
+
+.whatsapp-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; z-index: 9999; }
+.whatsapp-btn img { width: 100%; }
+
+/* =========================================
+   7. RESPONSIVIDADE (Celular)
+   ========================================= */
+@media (max-width: 768px) {
+    nav { flex-direction: column; gap: 15px; text-align: center; }
+    .nav-menu { flex-direction: column; gap: 10px; }
+    .hero-flex { flex-direction: column-reverse; text-align: center; padding: 40px 0; }
+    h1 { font-size: 32px; }
+    .grid-servicos, .gallery-grid, .packages-grid { grid-template-columns: 1fr; }
+    .media-container, .package-img, .gallery-item { height: 300px; }
+}
