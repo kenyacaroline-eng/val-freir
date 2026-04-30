@@ -90,6 +90,28 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 }
 
 /* =========================================
+   EFEITO DE DESTAQUE NOS CARDS (HOVER)
+   ========================================= */
+
+/* Aplica o efeito tanto nos procedimentos (.card) quanto nas noivas (.package-card) */
+.card:hover, .package-card:hover {
+    transform: translateY(-10px); /* Faz o card "subir" um pouco */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Cria uma sombra mais profunda, dando ideia de profundidade */
+    z-index: 10; /* Garante que o card fique "por cima" dos vizinhos se estiverem muito perto */
+}
+
+/* Efeito extra: Faz a imagem dentro do card crescer levemente sem sair da caixa */
+.card:hover img, .package-card:hover img {
+    transform: scale(1.05); /* Aumenta a imagem em 5% */
+}
+
+/* Garante que a transição seja suave (adicione isso nas regras originais se ainda não tiver) */
+.card, .package-card, .card img, .package-card img {
+    transition: all 0.4s ease-in-out;
+}
+
+
+/* =========================================
    5. SEÇÃO HERO E TIPOGRAFIA
    ========================================= */
 .hero-flex { display: flex; align-items: center; gap: 50px; padding: 60px 0; }
@@ -132,4 +154,23 @@ footer { background: #1a1e14; color: var(--creme); padding: 60px 0 20px; margin-
     h1 { font-size: 32px; }
     .grid-servicos, .gallery-grid, .packages-grid { grid-template-columns: 1fr; }
     .media-container, .package-img, .gallery-item { height: 300px; }
+}
+
+.footer-socials {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px; /* Espaço maior entre os dois ícones */
+}
+
+.footer-socials img {
+    width: 26px; 
+    height: 26px;
+    /* Esse filtro abaixo faz os ícones pretos ficarem em um tom de dourado envelhecido */
+    filter: invert(72%) sepia(17%) saturate(848%) hue-rotate(346deg) brightness(87%) contrast(85%);
+    transition: 0.3s;
+}
+
+.footer-socials a:hover img {
+    transform: scale(1.2); /* Aumenta um pouco ao passar o mouse */
+    filter: brightness(1.1); /* Brilha levemente */
 }
