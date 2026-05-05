@@ -1,5 +1,5 @@
 /* =========================================
-   1. VARIÁVEIS E RESET (Cores Originais)
+   1. VARIÁVEIS E RESET
    ========================================= */
 :root {
     --verde: #66754C;
@@ -9,50 +9,142 @@
     --branco: #ffffff;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Montserrat', sans-serif; 
+}
 
-body { background-color: var(--creme); color: var(--texto); overflow-x: hidden; width: 100%; }
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
 
-.container { max-width: 1140px; margin: 0 auto; padding: 0 20px; width: 100%; }
+body { 
+    background-color: var(--creme); 
+    color: var(--texto); 
+}
 
-.center { text-align: center; }
+.container { 
+    max-width: 1140px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    width: 100%; 
+}
 
-/* =========================================
-   2. HEADER E NAVEGAÇÃO (Universal)
-   ========================================= */
-header { background: var(--branco); padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-nav { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--verde); font-weight: bold; }
-.nav-menu { display: flex; gap: 20px; list-style: none; align-items: center; }
-.nav-menu a { text-decoration: none; color: var(--texto); font-size: 13px; font-weight: 600; text-transform: uppercase; }
-.nav-menu a.active { color: var(--verde); border-bottom: 2px solid var(--verde); }
-.cta-nav { background: var(--verde); color: white !important; padding: 10px 20px; border-radius: 4px; }
-
-/* =========================================
-   3. GRIDS DE CONTEÚDO (Para todas as páginas)
-   ========================================= */
-/* Unificando as grids de Procedimentos, Noivas e Home */
-.grid-servicos, .gallery-grid, .packages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 40px 0;
+.center { 
+    text-align: center; 
 }
 
 /* =========================================
-   4. ESTILO DOS CARDS (Procedimentos E Noivas)
+   2. HEADER E NAVEGAÇÃO
    ========================================= */
+header { 
+    background: var(--branco); 
+    padding: 15px 0; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
 
-/* Estilo para a página de Procedimentos (.card) */
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 24px; 
+    color: var(--verde); 
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.nav-menu { 
+    display: flex; 
+    gap: 20px; 
+    list-style: none; 
+    align-items: center;
+}
+
+.nav-menu a { 
+    text-decoration: none; 
+    color: var(--texto); 
+    font-size: 13px; 
+    font-weight: 600; 
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--dourado);
+}
+
+.nav-menu a.active { 
+    color: var(--verde); 
+    border-bottom: 2px solid var(--verde); 
+}
+
+.cta-nav { 
+    background: var(--verde); 
+    color: white !important; 
+    padding: 10px 20px; 
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.cta-nav:hover {
+    background: #556b47;
+}
+
+/* Menu Hambúrguer */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--verde);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* =========================================
+   3. GRIDS DE CONTEÚDO
+   ========================================= */
+.grid-servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+    align-items: stretch;
+}
+
+/* =========================================
+   4. CARDS
+   ========================================= */
 .card {
     background: var(--branco);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-/* Estilo para a página de Noivas (.package-card) */
 .package-card {
     background: var(--branco);
     border-radius: 12px;
@@ -63,138 +155,208 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     transition: 0.3s;
 }
 
-.package-card.featured { border: 2px solid var(--verde); transform: scale(1.02); }
+.package-card.featured { 
+    border: 2px solid var(--verde); 
+    transform: scale(1.02); 
+}
 
-/* Recipientes de Mídia (Imagens e Vídeos) */
-.media-container, .package-img, .gallery-item {
+.media-container, 
+.package-img, 
+.gallery-item {
     width: 100%;
+    min-height: 350px;
     height: 350px;
     overflow: hidden;
     position: relative;
 }
 
-.media-container img, .media-container video, 
-.package-img img, .gallery-item img {
+.media-container video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.card-body, .package-info { padding: 25px; text-align: center; }
+.card-body, 
+.package-info { 
+    padding: 25px; 
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .badge {
-    position: absolute; top: 15px; right: 15px;
-    background: var(--verde); color: white;
-    padding: 5px 15px; border-radius: 20px; font-size: 10px; font-weight: bold;
+    position: absolute; 
+    top: 15px; 
+    right: 15px;
+    background: var(--verde); 
+    color: white;
+    padding: 5px 15px; 
+    border-radius: 20px; 
+    font-size: 10px; 
+    font-weight: bold;
 }
 
-/* =========================================
-   EFEITO DE DESTAQUE NOS CARDS (HOVER)
-   ========================================= */
-
-/* Aplica o efeito tanto nos procedimentos (.card) quanto nas noivas (.package-card) */
-.card:hover, .package-card:hover {
-    transform: translateY(-10px); /* Faz o card "subir" um pouco */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Cria uma sombra mais profunda, dando ideia de profundidade */
-    z-index: 10; /* Garante que o card fique "por cima" dos vizinhos se estiverem muito perto */
+/* Efeito Hover nos Cards */
+.card:hover, 
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    z-index: 10;
 }
 
-/* Efeito extra: Faz a imagem dentro do card crescer levemente sem sair da caixa */
-.card:hover img, .package-card:hover img {
-    transform: scale(1.05); /* Aumenta a imagem em 5% */
+.card:hover img, 
+.package-card:hover img {
+    transform: scale(1.05);
 }
 
-/* Garante que a transição seja suave (adicione isso nas regras originais se ainda não tiver) */
-.card, .package-card, .card img, .package-card img {
+.card, 
+.package-card, 
+.card img, 
+.package-card img {
     transition: all 0.4s ease-in-out;
 }
 
 
 /* =========================================
-   5. SEÇÃO HERO E TIPOGRAFIA
+   5. HERO E TIPOGRAFIA
    ========================================= */
-.hero-flex { display: flex; align-items: center; gap: 50px; padding: 60px 0; }
-.hero-text { flex: 1; }
-.hero-img-container { flex: 1; text-align: center; }
-
-h1, .section-title { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--verde); margin-bottom: 20px; }
-h2, h3 { font-family: 'Playfair Display', serif; margin-bottom: 10px; }
-
-.subtitle { color: var(--dourado); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
-
-.img-hero { width: 100%; max-width: 400px; border-radius: 200px 200px 0 0; border: 8px solid white; box-shadow: 15px 15px 0 var(--verde); }
-
-.btn-primary, .btn-gold, .btn-outline {
-    display: inline-block; padding: 12px 25px; border-radius: 4px; 
-    text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.3s;
+.hero-flex { 
+    display: flex; 
+    align-items: center; 
+    gap: 50px; 
+    padding: 60px 20px;
 }
-.btn-primary, .btn-gold { background: var(--verde); color: white; }
-.btn-outline { border: 1px solid var(--verde); color: var(--verde); }
 
-/* --- Efeito na Imagem da Val (Hero) --- */
+.hero-text { 
+    flex: 1;
+}
+
+.hero-img-container { 
+    flex: 1; 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+h1, 
+.section-title { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 42px; 
+    color: var(--verde); 
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+h2, h3 { 
+    font-family: 'Playfair Display', serif; 
+    margin-bottom: 10px; 
+}
+
+.subtitle { 
+    color: var(--dourado); 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-weight: 600; 
+}
+
+.tagline {
+    display: block;
+    color: var(--dourado);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
 .img-hero { 
-    width: 100%; 
-    max-width: 400px; 
-    border-radius: 200px 200px 0 0; 
-    border: 8px solid white; 
+    width: 100%;
+    max-width: 400px;
+    border-radius: 200px 200px 0 0;
+    border: 8px solid white;
     box-shadow: 15px 15px 0 var(--verde);
-    
-    /* ADICIONE ESTAS LINHAS ABAIXO: */
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
     cursor: pointer;
 }
 
-/* Efeito ao passar o mouse no container da imagem */
 .hero-img-container:hover .img-hero {
-    transform: translateY(-20px); /* Faz a Val subir */
-    box-shadow: 25px 25px 0 var(--verde); /* Aumenta a sombra lateral para acompanhar o movimento */
+    transform: translateY(-20px);
+    box-shadow: 25px 25px 0 var(--verde);
 }
 
-/* =========================================
-   6. RODAPÉ E BOTÃO FLUTUANTE
-   ========================================= */
-footer { background: #1a1e14; color: var(--creme); padding: 60px 0 20px; margin-top: 50px; }
-.footer-grid { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-.footer-box { flex: 1; min-width: 250px; }
-.footer-title { color: var(--dourado); margin-bottom: 15px; font-family: 'Playfair Display', serif; }
-.footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; }
-
-.whatsapp-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; z-index: 9999; }
-.whatsapp-btn img { width: 100%; }
-
-/* =========================================
-   7. RESPONSIVIDADE (Celular)
-   ========================================= */
-@media (max-width: 768px) {
-    nav { flex-direction: column; gap: 15px; text-align: center; }
-    .nav-menu { flex-direction: column; gap: 10px; }
-    .hero-flex { flex-direction: column-reverse; text-align: center; padding: 40px 0; }
-    h1 { font-size: 32px; }
-    .grid-servicos, .gallery-grid, .packages-grid { grid-template-columns: 1fr; }
-    .media-container, .package-img, .gallery-item { height: 300px; }
-}
-
-.footer-socials {
-    margin-top: 15px;
-    display: flex;
-    gap: 20px; /* Espaço maior entre os dois ícones */
-}
-
-.footer-socials img {
-    width: 26px; 
-    height: 26px;
-    /* Esse filtro abaixo faz os ícones pretos ficarem em um tom de dourado envelhecido */
-    filter: invert(72%) sepia(17%) saturate(848%) hue-rotate(346deg) brightness(87%) contrast(85%);
+.btn-primary, 
+.btn-gold, 
+.btn-outline {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
     transition: 0.3s;
+    border: none;
+    cursor: pointer;
 }
 
-.footer-socials a:hover img {
-    transform: scale(1.2); /* Aumenta um pouco ao passar o mouse */
-    filter: brightness(1.1); /* Brilha levemente */
+.btn-primary, 
+.btn-gold { 
+    background: var(--verde); 
+    color: white; 
 }
 
-/* Estilo para a Seção de Promoção */
+.btn-primary:hover,
+.btn-gold:hover {
+    background: #556b47;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 117, 76, 0.3);
+}
+
+.btn-outline { 
+    border: 1px solid var(--verde); 
+    color: var(--verde); 
+}
+
+/* =========================================
+   6. RECEPÇÃO / ESPAÇO
+   ========================================= */
+.recepcao-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-direction: row-reverse;
+}
+
+.recepcao-text {
+    flex: 1;
+}
+
+.recepcao-img-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-espaco-moderno {
+    width: 100%;
+    max-width: 450px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 6px solid white;
+    box-shadow: -15px 15px 0 var(--dourado);
+    transition: 0.4s ease;
+}
+
+
+/* =========================================
+   7. PROMOÇÕES / BANNER
+   ========================================= */
 .banner-promo {
     display: flex;
     background: var(--branco);
@@ -204,62 +366,474 @@ footer { background: #1a1e14; color: var(--creme); padding: 60px 0 20px; margin-
     align-items: center;
 }
 
-
-
-
 .promo-video {
     flex: 1;
-    background-color: #000; /* Fundo preto para as laterais do vídeo vertical */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 500px; /* Altura fixa para manter o padrão do banner */
+    min-width: 0;
 }
 
-.promo-video video {
-    max-height: 100%;
-    max-width: 100%;
-    /* O 'contain' garante que o vídeo apareça inteiro, sem cortes no topo ou base */
-    object-fit: contain; 
-}
-
-
-
-
-
-/* 1. O espaço onde o vídeo vai ficar */
 .promo-video-container {
-    width: 100%;       /* Ocupa a largura total da coluna dele */
-    height: 500px;     /* Define uma altura fixa para o banner */
-    overflow: hidden;  /* Corta o que sobrar do vídeo para não vazar */
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
     position: relative;
-    background: #000;  /* Cor de fundo caso o vídeo demore a carregar */
+    background: #000;
 }
 
-/* 2. O comportamento do vídeo lá dentro */
 .promo-video-container video {
-    width: 100%;       /* Força a largura a preencher o container */
-    height: 100%;      /* Força a altura a preencher o container */
-    
-    /* O COMANDO MÁGICO ABAIXO: */
-    object-fit: cover; 
-    
-    /* Garante que o centro do vídeo (onde costuma estar o rosto/produto) fique visível */
-    object-position: top; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
 }
 
+.promo-info {
+    flex: 1;
+    padding: 40px;
+    text-align: left;
+}
 
-/* No celular, o banner fica um em cima do outro */
+.tag-exclusive {
+    display: inline-block;
+    background: var(--dourado);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.promo-frase {
+    font-style: italic;
+    color: var(--dourado);
+    border-left: 3px solid var(--verde);
+    padding-left: 20px;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+/* =========================================
+   8. RODAPÉ
+   ========================================= */
+footer { 
+    background: #1a1e14; 
+    color: var(--creme); 
+    padding: 60px 20px 20px; 
+    margin-top: 50px; 
+}
+
+.footer-grid { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 40px; 
+    flex-wrap: wrap;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.footer-box { 
+    flex: 1; 
+    min-width: 250px; 
+}
+
+.footer-title { 
+    color: var(--dourado); 
+    margin-bottom: 15px; 
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+}
+
+.footer-bottom { 
+    text-align: center; 
+    margin-top: 40px; 
+    padding-top: 20px; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    font-size: 12px; 
+}
+
+.footer-socials {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+.footer-socials img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    filter: invert(72%) sepia(17%) saturate(848%) hue-rotate(346deg) brightness(87%) contrast(85%);
+    transition: 0.3s;
+}
+
+.footer-socials a:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.1);
+}
+
+.whatsapp-btn { 
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    width: 60px; 
+    z-index: 9999; 
+}
+
+.whatsapp-btn img { 
+    width: 100%; 
+}
+
+/* =========================================
+   RESPONSIVIDADE - TABLET (768px e abaixo)
+   ========================================= */
 @media (max-width: 768px) {
-    .promo-video {
-        height: 450px; /* Altura ideal para ver vídeos verticais no celular */
+    /* Menu Hambúrguer Visível */
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--branco);
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        max-height: 300px;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 15px 20px;
+        border: none !important;
+    }
+
+    .nav-menu a.active {
+        background: var(--creme);
+        color: var(--verde);
+        border-bottom: none;
+    }
+
+    .cta-nav {
+        margin: 10px 20px;
+        display: block;
+        text-align: center;
+    }
+
+    /* Hero */
+    .hero-flex {
+        flex-direction: column-reverse;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    h1, .section-title {
+        font-size: 32px;
+    }
+
+    .hero-img-container {
+        width: 100%;
+    }
+
+    .img-hero {
+        max-width: 100%;
+        width: 90%;
+    }
+
+    /* Recepção */
+    .recepcao-flex {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .recepcao-text,
+    .recepcao-img-container {
+        flex: 1;
+        width: 100%;
+    }
+
+    .img-espaco-moderno {
+        max-width: 100%;
+        width: 85%;
+        height: 280px;
+        box-shadow: -10px 10px 0 var(--dourado);
+        margin: 20px auto 0;
+    }
+
+    /* Grids */
+    .grid-servicos,
+    .gallery-grid,
+    .packages-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 30px 0;
+    }
+
+    /* Cards */
+    .media-container,
+    .package-img,
+    .gallery-item {
+        height: 280px;
+    }
+
+    .card-body,
+    .package-info {
+        padding: 20px;
+    }
+
+    /* Banner Promoção */
+    .banner-promo {
+        flex-direction: column;
+    }
+
+    .promo-video,
+    .promo-info {
+        width: 100%;
+    }
+
+    .promo-video-container {
+        height: 350px;
+    }
+
+    .promo-info {
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    /* Rodapé */
+    .footer-grid {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-box {
+        min-width: auto;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-btn {
+        width: 50px;
+        bottom: 20px;
+        right: 20px;
     }
 }
 
-.promo-info { flex: 1; padding: 40px; text-align: left; }
+/* =========================================
+   RESPONSIVIDADE - CELULAR (600px e abaixo)
+   ========================================= */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 15px;
+    }
 
-/* Responsividade para o Banner */
-@media (max-width: 768px) {
-    .banner-promo { flex-direction: column; }
-    .promo-video { height: 250px; width: 100%; }
+    nav {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    h1, .section-title {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    /* Hero */
+    .hero-flex {
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .img-hero {
+        width: 80%;
+        box-shadow: 10px 10px 0 var(--verde);
+    }
+
+    .hero-img-container:hover .img-hero {
+        box-shadow: 15px 15px 0 var(--verde);
+        transform: translateY(-10px);
+    }
+
+    /* Botões */
+    .btn-primary,
+    .btn-gold,
+    .btn-outline {
+        padding: 10px 20px;
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Recepção */
+    .recepcao-flex {
+        padding: 30px 0;
+    }
+
+    .img-espaco-moderno {
+        width: 90%;
+        height: 250px;
+        box-shadow: -8px 8px 0 var(--dourado);
+    }
+
+    /* Grids */
+    .grid-servicos,
+    .gallery-grid,
+    .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 20px 0;
+    }
+
+    .media-container,
+    .package-img,
+    .gallery-item {
+        height: 250px;
+    }
+
+    .card-body,
+    .package-info {
+        padding: 15px;
+    }
+
+    /* Promoção */
+    .promo-video-container {
+        height: 280px;
+    }
+
+    .promo-info {
+        padding: 20px 15px;
+    }
+
+    .promo-info h2 {
+        font-size: 20px;
+    }
+
+    .promo-info p {
+        font-size: 13px;
+    }
+
+    /* Rodapé */
+    footer {
+        padding: 40px 15px 15px;
+    }
+
+    .footer-title {
+        font-size: 16px;
+    }
+
+    .footer-box p {
+        font-size: 13px;
+    }
+
+    .footer-socials {
+        gap: 15px;
+    }
+
+    .footer-socials img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .footer-socials a {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* Seções */
+    section {
+        padding: 40px 15px !important;
+    }
+
+    .section-title {
+        margin-bottom: 20px;
+    }
+
+    .tagline {
+        font-size: 12px;
+    }
 }
+
+/* =========================================
+   RESPONSIVIDADE - CELULAR PEQUENO (400px)
+   ========================================= */
+@media (max-width: 400px) {
+    h1, .section-title {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .img-hero {
+        width: 100%;
+        box-shadow: 8px 8px 0 var(--verde);
+    }
+
+    .img-espaco-moderno {
+        width: 95%;
+        height: 220px;
+        box-shadow: -6px 6px 0 var(--dourado);
+    }
+
+    .promo-info {
+        padding: 15px 10px;
+    }
+
+    .btn-primary,
+    .btn-gold {
+        padding: 8px 16px;
+        font-size: 11px;
+    }
+
+    .card-body,
+    .package-info {
+        padding: 12px;
+    }
+
+    .tag-exclusive {
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+}
+

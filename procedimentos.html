@@ -11,7 +11,12 @@
     <header>
         <nav class="container">
             <div class="logo">VAL FREIRE</div>
-            <ul class="nav-menu">
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Início</a></li>
                 <li><a href="procedimentos.html" class="active">Procedimentos</a></li>
                 <li><a href="noivas.html">Noivas & Eventos</a></li>
@@ -29,7 +34,11 @@
             
 <!-- Novos Serviços Adicionados -->
 <div class="card">
-    <div class="media-container"><img src="img/brow-lamination.jpg" alt="Brow Lamination"></div>
+    <div class="media-container">
+        <video autoplay muted loop playsinline poster="img/brow-lamination.jpeg">
+            <source src="videos/brow-lamination.mp4" type="video/mp4">
+        </video>
+    </div>
     <div class="card-body">
         <h3>Brow Lamination</h3>
         <p>Sobrancelhas alinhadas e volumosas com efeito natural.</p>
@@ -37,7 +46,9 @@
 </div>
 
 <div class="card">
-    <div class="media-container"><img src="img/lash-lift.jpg" alt="Lash Lifting"></div>
+    <div class="media-container">
+        <img src="img/lash-lifting.jpeg" alt="Lash Lifting">
+    </div>
     <div class="card-body">
         <h3>Lash Lifting</h3>
         <p>Curvatura e realce dos seus próprios cílios por semanas.</p>
@@ -45,7 +56,9 @@
 </div>
 
 <div class="card">
-    <div class="media-container"><img src="img/spa-pes.jpg" alt="Spa dos Pés"></div>
+    <div class="media-container">
+        <img src="img/spar-dos-pes.jpg" alt="Spa dos Pés">
+    </div>
     <div class="card-body">
         <h3>Spa dos Pés</h3>
         <p>Relaxamento profundo e renovação para seus pés.</p>
@@ -53,7 +66,9 @@
 </div>
 
 <div class="card">
-    <div class="media-container"><img src="img/massagem.jpg" alt="Massagens"></div>
+    <div class="media-container">
+        <img src="img/massagem-relaxante.jpg" alt="Massagens">
+    </div>
     <div class="card-body">
         <h3>Massagens Especializadas</h3>
         <p>Técnicas relaxantes e modeladoras para seu bem-estar.</p>
@@ -61,15 +76,9 @@
 </div>
 
 <div class="card">
-    <div class="media-container"><img src="img/areola.jpg" alt="Reconstrução de Aréola"></div>
-    <div class="card-body">
-        <h3>Reconstrução de Aréola</h3>
-        <p>Procedimento delicado de micropigmentação paramédica.</p>
+    <div class="media-container">
+        <img src="img/micro-labial.jpeg" alt="Micro Labial">
     </div>
-</div>
-
-<div class="card">
-    <div class="media-container"><img src="img/micro-labial.jpg" alt="Micro Labial"></div>
     <div class="card-body">
         <h3>Micropigmentação Labial</h3>
         <p>Cor e definição para lábios naturalmente impecáveis.</p>
@@ -151,8 +160,26 @@
     </footer>
 
     <a href="https://wa.me/5561992348163" class="whatsapp-btn" target="_blank" aria-label="Falar no WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon">
-</a>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon">
+    </a>
 
+    <script>
+        // Menu Hambúrguer
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

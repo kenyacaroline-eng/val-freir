@@ -11,7 +11,12 @@
     <header>
         <nav class="container">
             <div class="logo">VAL FREIRE</div>
-            <ul class="nav-menu">
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="active">Início</a></li>
                 <li><a href="procedimentos.html">Procedimentos</a></li>
                 <li><a href="noivas.html">Noivas & Eventos</a></li>
@@ -37,16 +42,18 @@
     </section>
 
     <section class="recepcao container" style="padding: 60px 20px;">
-    <div class="hero-flex" style="flex-direction: row-reverse;">
-        <div class="hero-text">
-            <h2 class="section-title">Nossa Espaço</h2>
-            <p> "Excelência, conforto e modernidade no SIG. No Platinum Office, cada detalhe foi planejado para que sua experiência seja única do início ao fim. Conte com uma equipe especializada em um ambiente sofisticado, desenhado exclusivamente para o seu bem-estar."</p>
+    <!-- Mudamos os nomes das classes para não dar conflito com o topo -->
+    <div class="recepcao-flex">
+        <div class="recepcao-text">
+            <h2 class="section-title">Nosso Espaço</h2>
+            <p>"Excelência, conforto e modernidade no SIG. No Platinum Office, cada detalhe foi planejado para que sua experiência seja única do início ao fim. Conte com uma equipe especializada em um ambiente sofisticado, desenhado exclusivamente para o seu bem-estar."</p>
         </div>
-        <div class="hero-img-container">
-            <img src="img/espaco-moderno.jpg" alt="Recepção da Clínica" class="img-hero" style="border-radius: 4px; box-shadow: -15px 15px 0 var(--dourado);">
+        <div class="recepcao-img-container">
+            <img src="img/espaco-moderno.jpg" alt="Recepção da Clínica" class="img-espaco-moderno">
         </div>
     </div>
 </section>
+
 
 <!-- SEÇÃO: PROMOÇÕES DO MÊS (Atualizar mensalmente) -->
 <section class="promocoes container" style="padding: 60px 20px;">
@@ -91,25 +98,41 @@
                 <p>📞 (61) 99234-8163</p>
             </div>
             <div class="footer-socials">
-
-    <!-- Link do Instagram -->
-    <a href="https://www.instagram.com/valfreireestetica" target="_blank" aria-label="Instagram">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-    </a>
-    <!-- Link do Facebook -->
-    <a href="https://www.facebook.com/valfreireestetica" target="_blank" aria-label="Facebook">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-    </a>
-</div>
-
+                <!-- Link do Instagram -->
+                <a href="https://www.instagram.com/valfreireestetica" target="_blank" aria-label="Instagram">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+                </a>
+                <!-- Link do Facebook -->
+                <a href="https://www.facebook.com/valfreireestetica" target="_blank" aria-label="Facebook">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+                </a>
+            </div>
         </div>
 
         <div class="footer-bottom">© 2026 Val Freire Estética | Desenvolvido por Carol Carvalho</div>
     </footer>
 
     <a href="https://wa.me/5561992348163" class="whatsapp-btn" target="_blank" aria-label="Falar no WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon">
-</a>
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon">
+    </a>
 
+    <script>
+        // Menu Hambúrguer
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
