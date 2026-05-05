@@ -132,6 +132,25 @@ h2, h3 { font-family: 'Playfair Display', serif; margin-bottom: 10px; }
 .btn-primary, .btn-gold { background: var(--verde); color: white; }
 .btn-outline { border: 1px solid var(--verde); color: var(--verde); }
 
+/* --- Efeito na Imagem da Val (Hero) --- */
+.img-hero { 
+    width: 100%; 
+    max-width: 400px; 
+    border-radius: 200px 200px 0 0; 
+    border: 8px solid white; 
+    box-shadow: 15px 15px 0 var(--verde);
+    
+    /* ADICIONE ESTAS LINHAS ABAIXO: */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse no container da imagem */
+.hero-img-container:hover .img-hero {
+    transform: translateY(-20px); /* Faz a Val subir */
+    box-shadow: 25px 25px 0 var(--verde); /* Aumenta a sombra lateral para acompanhar o movimento */
+}
+
 /* =========================================
    6. RODAPÉ E BOTÃO FLUTUANTE
    ========================================= */
@@ -173,4 +192,74 @@ footer { background: #1a1e14; color: var(--creme); padding: 60px 0 20px; margin-
 .footer-socials a:hover img {
     transform: scale(1.2); /* Aumenta um pouco ao passar o mouse */
     filter: brightness(1.1); /* Brilha levemente */
+}
+
+/* Estilo para a Seção de Promoção */
+.banner-promo {
+    display: flex;
+    background: var(--branco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    align-items: center;
+}
+
+
+
+
+.promo-video {
+    flex: 1;
+    background-color: #000; /* Fundo preto para as laterais do vídeo vertical */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px; /* Altura fixa para manter o padrão do banner */
+}
+
+.promo-video video {
+    max-height: 100%;
+    max-width: 100%;
+    /* O 'contain' garante que o vídeo apareça inteiro, sem cortes no topo ou base */
+    object-fit: contain; 
+}
+
+
+
+
+
+/* 1. O espaço onde o vídeo vai ficar */
+.promo-video-container {
+    width: 100%;       /* Ocupa a largura total da coluna dele */
+    height: 500px;     /* Define uma altura fixa para o banner */
+    overflow: hidden;  /* Corta o que sobrar do vídeo para não vazar */
+    position: relative;
+    background: #000;  /* Cor de fundo caso o vídeo demore a carregar */
+}
+
+/* 2. O comportamento do vídeo lá dentro */
+.promo-video-container video {
+    width: 100%;       /* Força a largura a preencher o container */
+    height: 100%;      /* Força a altura a preencher o container */
+    
+    /* O COMANDO MÁGICO ABAIXO: */
+    object-fit: cover; 
+    
+    /* Garante que o centro do vídeo (onde costuma estar o rosto/produto) fique visível */
+    object-position: top; 
+}
+
+
+/* No celular, o banner fica um em cima do outro */
+@media (max-width: 768px) {
+    .promo-video {
+        height: 450px; /* Altura ideal para ver vídeos verticais no celular */
+    }
+}
+
+.promo-info { flex: 1; padding: 40px; text-align: left; }
+
+/* Responsividade para o Banner */
+@media (max-width: 768px) {
+    .banner-promo { flex-direction: column; }
+    .promo-video { height: 250px; width: 100%; }
 }
